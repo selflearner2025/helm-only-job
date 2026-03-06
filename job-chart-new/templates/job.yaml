@@ -3,9 +3,9 @@ kind: Job
 metadata:
   name: {{ .Values.jobName }}
   annotations:
-    argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
-    argocd.argoproj.io/sync-wave: "1"
+   argocd.argoproj.io/hook: Sync
+   argocd.argoproj.io/hook-delete-policy: HookSucceeded  
+    #argocd.argoproj.io/sync-wave: "1"
 spec:
   ttlSecondsAfterFinished: {{ .Values.ttlSecondsAfterFinished }}
   activeDeadlineSeconds: {{ .Values.activeDeadlineSeconds }}

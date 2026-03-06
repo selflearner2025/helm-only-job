@@ -14,16 +14,16 @@ spec:
   source:
     repoURL: https://github.com/selflearner2025/helm-only-job.git
     targetRevision: test
-    path: overlays/qa      # ← points to dev overlay
+    path: overlays/qa      # ← points to qa overlay
 
   destination:
     server: https://kubernetes.default.svc
     namespace: single-bpmn-ns-new                   # ← shared namespace
 
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    automated: {}
+      #prune: true
+      #selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
