@@ -20,5 +20,12 @@ spec:
     namespace: argocd
   syncPolicy: 
     automated: {}
+    syncOptions:
+      - ServerSideApply=false
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+      - Validate=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
      # prune: true
      # selfHeal: true
