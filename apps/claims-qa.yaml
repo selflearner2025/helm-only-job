@@ -20,10 +20,10 @@ spec:
     server: https://kubernetes.default.svc
     namespace: single-bpmn-ns-new                   # ← shared namespace
 
-  syncPolicy: {}
-    #automated: {}
+  syncPolicy: 
+    automated: {}
       #prune: true
       #selfHeal: true
-    #syncOptions:
+    syncOptions:
      # - CreateNamespace=true
-      #- ServerSideApply=false
+      - ServerSideApply=false
