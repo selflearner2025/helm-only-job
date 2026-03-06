@@ -1,0 +1,12 @@
+# dev/values-job-dev.yaml
+jobName: "claims-bpmn-sync-job-dev"
+image: "alpine:3.20"
+ttlSecondsAfterFinished: 400
+activeDeadlineSeconds: 600
+backoffLimit: 1
+secretName: "dev-secret"
+
+# artifact details - Jenkins updates these on every run
+artifactName: "claims-management-dev-v1.0.0.bpmn"
+artifactSha256: "dev-sha256-placeholder"
+artifactUrl: "https://nexus/claims/dev/v1.0.0.bpmn"

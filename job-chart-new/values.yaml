@@ -1,0 +1,18 @@
+# job-chart/values.yaml
+
+# job identity
+jobName: ""
+image: "alpine:3.20"
+
+# job execution config
+ttlSecondsAfterFinished: 400
+activeDeadlineSeconds: 600
+backoffLimit: 1
+
+# secret
+secretName: ""
+
+# artifact details - overridden by env specific values file on every Jenkins run
+artifactName: ""
+artifactSha256: ""
+artifactUrl: ""

@@ -1,0 +1,12 @@
+# qa/values-job-qa.yaml
+jobName: "claims-bpmn-sync-job-qa"
+image: "alpine:3.20"
+ttlSecondsAfterFinished: 400
+activeDeadlineSeconds: 600
+backoffLimit: 1
+secretName: "qa-secret"
+
+# artifact details - Jenkins updates these on every run
+artifactName: "claims-management-qa-v1.0.0.bpmn"
+artifactSha256: "qa-sha256-placeholder"
+artifactUrl: "https://nexus/claims/qa/v1.0.0.bpmn"

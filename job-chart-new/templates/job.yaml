@@ -1,0 +1,52 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.jobName }}
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  ttlSecondsAfterFinished: {{ .Values.ttlSecondsAfterFinished }}
+  activeDeadlineSeconds: {{ .Values.activeDeadlineSeconds }}
+  backoffLimit: {{ .Values.backoffLimit }}
+  template:
+    spec:
+      restartPolicy: Never
+      volumes:
+        - name: bpmn
+          emptyDir: {}
+        - name: env-secret
+          secret:
+            secretName: {{ .Values.secretName }}
+      containers:
+        - name: downloader
+          image: {{ .Values.image }}
+          env:
+            - name: ARTIFACT_NAME
+              value: {{ .Values.artifactName | quote }}
+            - name: ARTIFACT_URL
+              value: {{ .Values.artifactUrl | quote }}
+            - name: ARTIFACT_SHA256
+              value: {{ .Values.artifactSha256 | quote }}
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              set -eu
+              echo "I am from nexus"
+
+              echo "Artifact Details:"
+              echo "artifactName:   $ARTIFACT_NAME"
+              echo "artifactUrl:    $ARTIFACT_URL"
+              echo "artifactSha256: $ARTIFACT_SHA256"
+
+              echo "Listing secret mounted files:"
+              ls -la /secret
+
+              echo "Done."
+          volumeMounts:
+            - name: bpmn
+              mountPath: /bpmn
+            - name: env-secret
+              mountPath: /secret
+              readOnly: true

@@ -1,0 +1,5 @@
+apiVersion: v2
+description: Shared job chart maintained by platform team
+name: job-chart-new
+type: application
+version: 0.1.0
