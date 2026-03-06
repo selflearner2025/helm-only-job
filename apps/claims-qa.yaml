@@ -27,3 +27,8 @@ spec:
     syncOptions:
      # - CreateNamespace=true
       - ServerSideApply=false
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+      - Validate=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
