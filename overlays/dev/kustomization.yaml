@@ -8,6 +8,6 @@ helmCharts:
 
   - name: job-chart-new
     repo: http://nexus-nexus-repository-manager.default.svc.cluster.local:8081/repository/helm-hosted/
-    version: 0.0.1
+    version: 0.1.0
     releaseName: claims-job-dev              # ← releaseName scoped per env
     valuesFile: values-dev-job.yaml
